@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <!-- GOOGLE FONTS - POPPINS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Nice Clinic - Agendamento</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="barra-de-navegacao">
+            <ul>
+                <li>
+                    <div>
+                        <ul class="navbar-header-lista">
+                            <li class="navbar-logotipo">
+                                <div>
+                                    <i class='bx bx-plus-medical'></i>
+                                    <p>Nice Clinic</p>
+                                </div>
+                            </li>
+                            <!-- <li>
+                                <a href="#">Agendar Consulta</a>
+                            </li>
+                            <li>
+                                <a href="#">Agendar Exame</a>
+                            </li>
+                            <li>
+                                <a href="#">Resultados de Exames</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li id="opcoes-usuario" class="opcoes-usuario">
+                    <button class="btn-entrar">Entrar</button>
+                    <button class="btn-cadastrar">Cadastre-se</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container-tela-agendamento" id="container-tela-agendamento">
+
+        <h1>Agendamento de Consulta</h1>
+
+        <div class="card-especialidade card-especialidade-agendamento">
+            <i class='bx bx-first-aid'></i>
+            <p class="nome">Cardiologia</p>
+            <p class="nome-medico">Dra. Christina Yang</p>
+            <p class="local">São Paulo - SP</p>
+            <p class="valor">R$ 200,00</p>
+        </div>
+
+        <div class="container-agendamento">
+
+            <div class="calendario-container">
+                <h2>Selecione uma data:</h2>
+
+                <div class="cabecalho">
+                    <button id="mesAnterior">
+                        <i class='bx bx-left-arrow-alt'></i>
+                    </button>
+                    <span id="mesAno"></span>
+                    <button id="mesProximo">
+                        <i class='bx bx-right-arrow-alt'></i>
+                    </button>
+                </div>
+
+                <div class="dias-semana">
+                    <div>Dom</div>
+                    <div>Seg</div>
+                    <div>Ter</div>
+                    <div>Qua</div>
+                    <div>Qui</div>
+                    <div>Sex</div>
+                    <div>Sáb</div>
+                </div>
+
+                <div id="calendario" class="calendario"></div>
+
+                <div id="horariosDisponiveis" class="horarios"></div>
+
+            </div>
+
+            <div class="resumo-agendamento">
+                <h2>Resumo Agendamento</h2>
+
+                <div>
+                    <p class="nome">Especialidade: Cardiologia</p>
+                    <p class="nome-medico">Médico(a): Dra. Christina Yang</p>
+                    <p class="local">Local: São Paulo - SP</p>
+                    <p class="valor">Valor: R$ 200,00</p>
+
+                    <p class="data-consulta" id="data-consulta"></p>
+                </div>
+
+                <button class="btn-agendar">Confirmar Agendamento</button>
+            </div>
+        </div>
+
+
+
+
+
+
+    </main>
+    <footer></footer>
+
+    <script src="../js/pages/tela-agendamento.js"></script>
+</body>
+
+</html>

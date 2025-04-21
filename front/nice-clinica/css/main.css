@@ -1,5 +1,7 @@
 @import "base/_variaveis.css";
 @import "layout/_header.css";
+@import "layout/_tela-principal.css";
+@import "layout/_tela-agendamento.css";
 
 * {
     padding: 0;

@@ -1,0 +1,168 @@
+.container-tela-agendamento {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    margin: 30px;
+}
+
+.container-tela-agendamento h1 {
+    font-size: 24px;
+    margin: 20px 0 30px;
+    color: var(--font-color-1);
+}
+
+.card-especialidade-agendamento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px;
+    margin: 10px;
+    width: 100%;
+
+    border-radius: 10px;
+    box-shadow: 0 0 20px 0 rgba(161, 179, 194, 0.1);
+}
+
+.container-agendamento {
+    width: 50%;
+    margin-top: 30px;
+}
+
+.container-agendamento div h2 {
+    font-size: 20px;
+    margin: 20px 0;
+    color: var(--font-color-1);
+}
+
+.container-agendamento {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-especialidade-agendamento {
+    width: 60%;
+}
+
+.calendario-container {
+    display: inline-block;
+}
+
+.dias-semana,
+.calendario {
+    display: grid;
+    grid-template-columns: repeat(7, 40px);
+    gap: 5px;
+    justify-content: center;
+    color: var(--font-color-1);
+}
+
+.dias-semana div {
+    font-weight: bold;
+    padding: 5px 0;
+}
+
+.dia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dia:hover {
+    background-color: #ddd;
+}
+
+.selecionado {
+    background-color: #4caf50;
+    color: white;
+}
+
+.cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.cabecalho button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(221, 49%, 90%);
+    color: var(--bg-color-5);
+    border: none;
+    padding: 5px 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    width: 40px;
+    height: 40px;
+    margin: 0 20px;
+}
+
+.cabecalho button:hover {
+    background-color: var(--bg-color-5);
+    color: var(--bg-color-0);
+}
+
+#mesAno {
+    font-weight: bold;
+}
+
+.dia.indisponivel {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#horariosDisponiveis {
+    margin-top: 20px;
+}
+
+#horariosDisponiveis button {
+    margin: 5px;
+    padding: 10px;
+    background-color: var(--bg-color-5);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#horariosDisponiveis button:hover {
+    background-color: #125ea6;
+}
+
+#horariosDisponiveis button.selecionado {
+    background-color: #0d47a1;
+}
+
+.resumo-agendamento {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+}
+
+.resumo-agendamento p {
+    font-weight: 500;
+    margin: 5px 0;
+}
+
+.resumo-agendamento button {
+    border: none;
+    background-color: var(--bg-color-5);
+    color: var(--font-color-2);
+    padding: 10px;
+    font-size: var(--font-tam-pequeno);
+    border-radius: 10px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 50px;
+}
