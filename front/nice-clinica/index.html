@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+
+    <!-- GOOGLE FONTS - POPPINS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <title>Nice Clinic - Home</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="barra-de-navegacao">
+            <ul>
+                <li>
+                    <div>
+                        <ul class="navbar-header-lista">
+                            <li class="navbar-logotipo">
+                                <div>
+                                    <i class='bx bx-plus-medical'></i>
+                                    <p>Nice Clinic</p>
+                                </div>
+                            </li>
+                            <!-- <li>
+                                <a href="#">Agendar Consulta</a>
+                            </li>
+                            <li>
+                                <a href="#">Agendar Exame</a>
+                            </li>
+                            <li>
+                                <a href="#">Resultados de Exames</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li id="opcoes-usuario" class="opcoes-usuario">
+                    <button class="btn-entrar">Entrar</button>
+                    <button class="btn-cadastrar">Cadastre-se</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container-tela-principal" id="container-tela-principal">
+
+        <div class="opcoes-servicos">
+            <div class="opcao-servico">
+                <a href="#">
+                    <i class='bx bx-first-aid'></i>
+                    <p>Agendar consulta</p>
+                </a>
+            </div>
+            <div class="opcao-servico">
+                <a href="#">
+                    <i class='bx bx-test-tube'></i>
+                    <p>Agendar exame</p>
+                </a>
+            </div>
+            <div class="opcao-servico">
+                <a href="#">
+                    <i class='bx bx-calendar-event'></i>
+                    <p>Meus agendamentos</p>
+                </a>
+            </div>
+            <div class="opcao-servico">
+                <a href="#">
+                    <i class='bx bx-stats'></i>
+                    <p>Resultados de exames</p>
+                </a>
+            </div>
+        </div>
+
+
+        <div class="container-especialidades">
+
+            <div class="barra-de-pesquisa">
+                <input type="text" name="input-pesquisa" id="input-pesquisa" placeholder="Ex.: Cardiologia">
+                <button class="btn-buscar" id="btn-buscar">Buscar</button>
+            </div>
+
+            <div class="container-especialidade-medico">
+                <ul class="lista-especialidades">
+                    <li>
+                        <div class="card-especialidade">
+                            <i class='bx bx-first-aid'></i>
+                            <p class="nome">Cardiologia</p>
+                            <p class="nome-medico">Dra. Christina Yang</p>
+                            <p class="local">São Paulo - SP</p>
+                            <p class="valor">R$ 200,00</p>
+                            <button class="btn-visualizar-especialidade">
+                                <p>Ver mais</p>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-especialidade">
+                            <i class='bx bx-first-aid'></i>
+                            <p class="nome">Ortopedia</p>
+                            <p class="nome-medico">Dra. Meredith Grey</p>
+                            <p class="local">São Paulo - SP</p>
+                            <p class="valor">R$ 200,00</p>
+                            <button class="btn-visualizar-especialidade">
+                                <p>Ver mais</p>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-especialidade">
+                            <i class='bx bx-first-aid'></i>
+                            <p class="nome">Psicologia</p>
+                            <p class="nome-medico">Dr. Kim Taehyung</p>
+                            <p class="local">São Paulo - SP</p>
+                            <p class="valor">R$ 200,00</p>
+                            <button class="btn-visualizar-especialidade">
+                                <p>Ver mais</p>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-especialidade">
+                            <i class='bx bx-first-aid'></i>
+                            <p class="nome">Reumatologia</p>
+                            <p class="nome-medico">Dra. Lim Jukyung</p>
+                            <p class="local">São Paulo - SP</p>
+                            <p class="valor">R$ 200,00</p>
+                            <button class="btn-visualizar-especialidade">
+                                <p>Ver mais</p>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card-especialidade">
+                            <i class='bx bx-first-aid'></i>
+                            <p class="nome">Neurologia</p>
+                            <p class="nome-medico">Dr. Derek Shepherd</p>
+                            <p class="local">São Paulo - SP</p>
+                            <p class="valor">R$ 200,00</p>
+                            <button class="btn-visualizar-especialidade">
+                                <p>Ver mais</p>
+                                <i class='bx bx-right-arrow-alt'></i>
+                            </button>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+
+        </div>
+
+    </main>
+    <footer></footer>
+
+</body>
+
+</html>

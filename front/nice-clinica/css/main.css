@@ -1,0 +1,11 @@
+@import "base/_variaveis.css";
+@import "layout/_header.css";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: "Poppins", sans-serif;;
+}
+
