@@ -13,20 +13,20 @@ public class AtendimentoController {
     @Autowired
     private AtendimentoService atendimentoService;
 
-    @PostMapping("/agendar")
+    @PostMapping("/agendar") @CrossOrigin
     public ResponseEntity<?> agendar(@RequestBody AtendimentoDTO atendimentoDTO) {
 
         return atendimentoService.agendar(atendimentoDTO);
     }
 
-    @GetMapping("/medico/{tempo}/{idMedico}")
+    @GetMapping("/medico/{tempo}/{idMedico}") @CrossOrigin
     public ResponseEntity<?> getAtendimentos(@PathVariable Long idMedico, @PathVariable(required = false) String tempo) {
 
         return atendimentoService.getAtendimentosMedico(idMedico, tempo);
 
     }
 
-    @GetMapping("/paciente/{tempo}/{idPaciente}")
+    @GetMapping("/paciente/{tempo}/{idPaciente}") @CrossOrigin
     public ResponseEntity<?> getAtendimentosPaciente(@PathVariable Long idPaciente, @PathVariable(required = false) String tempo) {
 
         return atendimentoService.getAtendimentosPaciente(idPaciente, tempo);

@@ -1,12 +1,18 @@
+// confirmarAgendamento.js
+
 document.addEventListener("DOMContentLoaded", () => {
     const calendario = document.getElementById("calendario");
     const mesAno = document.getElementById("mesAno");
     const btnAnterior = document.getElementById("mesAnterior");
     const btnProximo = document.getElementById("mesProximo");
     const containerHorarios = document.getElementById("horariosDisponiveis");
-    const dataConsultaSelecionada = document.getElementById('data-consulta');
+    const dataConsultaSelecionada = document.getElementById("data-consulta");
+    const btnConfirmar = document.getElementById("btnConfirmar");
 
     let dataAtual = new Date();
+
+    let dataSelecionada = null;
+    let horarioSelecionado = null;
 
     const nomesMeses = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -27,8 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const diasNoMes = new Date(ano, mes + 1, 0).getDate();
 
         for (let i = 0; i < primeiroDia; i++) {
-            const vazio = document.createElement("div");
-            calendario.appendChild(vazio);
+            calendario.appendChild(document.createElement("div"));
         }
 
         for (let dia = 1; dia <= diasNoMes; dia++) {
@@ -36,18 +41,21 @@ document.addEventListener("DOMContentLoaded", () => {
             divDia.classList.add("dia");
             divDia.textContent = dia;
 
-            const dataCompleta = new Date(ano, mes, dia);
-            const dataFormatada = dataCompleta.toISOString().split("T")[0];
-
+            const dataObj = new Date(ano, mes, dia);
+            const dataFormatada = dataObj.toISOString().split("T")[0];
             const disponivel = diasDisponiveis.includes(dataFormatada);
+
             if (!disponivel) {
                 divDia.classList.add("indisponivel");
                 divDia.style.pointerEvents = "none";
                 divDia.style.opacity = "0.4";
             } else {
                 divDia.addEventListener("click", () => {
-                    document.querySelectorAll(".dia").forEach(d => d.classList.remove("selecionado"));
+
+                    document.querySelectorAll(".dia")
+                        .forEach(d => d.classList.remove("selecionado"));
                     divDia.classList.add("selecionado");
+
                     mostrarHorarios(dataFormatada);
                 });
             }
@@ -69,13 +77,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const botao = document.createElement("button");
             botao.textContent = horario;
             botao.addEventListener("click", () => {
-                document.querySelectorAll("#horariosDisponiveis button").forEach(btn => btn.classList.remove("selecionado"));
+
+                document.querySelectorAll("#horariosDisponiveis button")
+                    .forEach(b => b.classList.remove("selecionado"));
                 botao.classList.add("selecionado");
-                console.log(`Selecionado: ${data} às ${horario}`);
+
+                dataSelecionada = data;
+                horarioSelecionado = horario;
 
                 const [ano, mes, dia] = data.split("-");
-                const dataFormatadaBR = `${dia}/${mes}/${ano}`;
-                dataConsultaSelecionada.innerHTML = `Data: ${dataFormatadaBR} às ${horario}`;
+                const dataBR = `${dia}/${mes}/${ano}`;
+                dataConsultaSelecionada.textContent = `Data: ${dataBR} às ${horario}`;
             });
 
             containerHorarios.appendChild(botao);
@@ -87,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const mesAtual = hoje.getMonth();
         const anoAtual = hoje.getFullYear();
 
-        if (dataAtual.getMonth() === mesAtual && dataAtual.getFullYear() === anoAtual) return;
+        if (dataAtual.getMonth() === mesAtual && dataAtual.getFullYear() === anoAtual)
+            return;
 
         dataAtual.setMonth(dataAtual.getMonth() - 1);
         renderizarCalendario();
@@ -98,19 +111,32 @@ document.addEventListener("DOMContentLoaded", () => {
         const mesLimite = hoje.getMonth() + 2;
         const anoLimite = hoje.getFullYear();
 
-        if (dataAtual.getMonth() === mesLimite && dataAtual.getFullYear() === anoLimite) return;
+        if (dataAtual.getMonth() === mesLimite && dataAtual.getFullYear() === anoLimite)
+            return;
 
         dataAtual.setMonth(dataAtual.getMonth() + 1);
         renderizarCalendario();
     });
 
+    btnConfirmar.addEventListener("click", () => {
+        if (dataSelecionada && horarioSelecionado) {
+
+            agendarAtendimento(dataSelecionada + ":" + horarioSelecionado)
+
+            
+        } else {
+            console.log("Nenhuma data e horário selecionados.");
+        }
+    });
+
     renderizarCalendario();
+    carregarDadosMedico()
 });
 
 function gerarDatasEHorariosDisponiveis(qtdMeses = 2) {
     const diasDisponiveis = [];
     const horariosPorDia = {};
-    const horariosPossiveis = ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
+    const possiveis = ["08:00", "09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"];
 
     const hoje = new Date();
     let dataAtual = new Date(hoje);
@@ -121,42 +147,32 @@ function gerarDatasEHorariosDisponiveis(qtdMeses = 2) {
         const mes = dataAtual.getMonth();
         const diasNoMes = new Date(ano, mes + 1, 0).getDate();
 
-        const diasUteis = [];
-
-        for (let dia = 1; dia <= diasNoMes; dia++) {
-            const data = new Date(ano, mes, dia);
-            if (mesContador === 0 && data < hoje) continue;
-
-            const diaSemana = data.getDay();
-            if (diaSemana !== 0 && diaSemana !== 6) {
-                diasUteis.push(data);
-            }
+        const uteis = [];
+        for (let d = 1; d <= diasNoMes; d++) {
+            const dt = new Date(ano, mes, d);
+            if (mesContador === 0 && dt < hoje) continue;
+            const wk = dt.getDay();
+            if (wk !== 0 && wk !== 6) uteis.push(dt);
         }
 
-        // Embaralha os dias úteis
-        for (let i = diasUteis.length - 1; i > 0; i--) {
+        for (let i = uteis.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            [diasUteis[i], diasUteis[j]] = [diasUteis[j], diasUteis[i]];
+            [uteis[i], uteis[j]] = [uteis[j], uteis[i]];
         }
+        const selecionados = uteis.slice(0, 6);
 
-        // Seleciona até 6 dias úteis aleatórios
-        const diasSelecionados = diasUteis.slice(0, 6);
+        selecionados.forEach(dt => {
+            const key = dt.toISOString().split("T")[0];
+            diasDisponiveis.push(key);
 
-        diasSelecionados.forEach(data => {
-            const dataFormatada = data.toISOString().split("T")[0];
-
-            // Horários para cada dia disponível
-            const quantidadeHorarios = Math.floor(Math.random() * 3) + 2; // entre 2 e 4 horários
-            const copiaHorarios = [...horariosPossiveis];
-            const horariosSorteados = [];
-
-            for (let i = 0; i < quantidadeHorarios; i++) {
-                const idx = Math.floor(Math.random() * copiaHorarios.length);
-                horariosSorteados.push(copiaHorarios.splice(idx, 1)[0]);
+            const copia = [...possiveis];
+            const sort = [];
+            const qt = Math.floor(Math.random() * 3) + 2;
+            for (let k = 0; k < qt; k++) {
+                const idx = Math.floor(Math.random() * copia.length);
+                sort.push(copia.splice(idx, 1)[0]);
             }
-
-            diasDisponiveis.push(dataFormatada);
-            horariosPorDia[dataFormatada] = horariosSorteados;
+            horariosPorDia[key] = sort;
         });
 
         dataAtual = new Date(ano, mes + 1, 1);
@@ -165,3 +181,94 @@ function gerarDatasEHorariosDisponiveis(qtdMeses = 2) {
 
     return { diasDisponiveis, horariosPorDia };
 }
+
+async function carregarDadosMedico() {
+
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get('id');
+
+    if (!id) {
+        console.error('ID do médico não encontrado na URL.');
+        return;
+    }
+
+    try {
+
+        const response = await fetch(`http://localhost:8080/medico/${id}`);
+        if (!response.ok) {
+            throw new Error('Erro ao buscar dados do médico');
+        }
+
+        const medico = await response.json();
+
+        document.querySelector('.card-especialidade .especialidade').textContent = medico.especialidade;
+        document.querySelector('.card-especialidade .nome-medico').textContent = medico.nome;
+        document.querySelector('.card-especialidade .crm').textContent = `CRM: ${medico.crm}`;
+        document.querySelector('.card-especialidade .valor').textContent = `R$ ${medico.valorConsulta.toFixed(2)}`;
+
+        const resumo = document.querySelector('.resumo-agendamento');
+        resumo.querySelector('.especialidade').textContent = `Especialidade: ${medico.especialidade}`;
+        resumo.querySelector('.nome-medico').textContent = `Médico(a): ${medico.nome}`;
+        resumo.querySelector('.crm').textContent = `CRM: ${medico.crm}`;
+        resumo.querySelector('.email').textContent = `E-mail: ${medico.email}`;
+        resumo.querySelector('.valor').textContent = `Valor: R$ ${medico.valorConsulta.toFixed(2)}`;
+
+    } catch (error) {
+        console.error('Erro ao carregar dados do médico:', error);
+    }
+}
+
+async function agendarAtendimento(dateISO) {
+
+    const params = new URLSearchParams(window.location.search);
+    const idMedico = params.get('id');
+    if (!idMedico) {
+      console.error('ID do médico não encontrado na URL.');
+      return;
+    }
+  
+    const letras = ['A', 'B', 'C', 'D'];
+    const letra = letras[Math.floor(Math.random() * letras.length)];
+    const numero = Math.floor(Math.random() * 400) + 100;
+    const sala = `${letra}${numero}`;
+  
+    const dadosAgendamento = {
+      idPaciente: 1,
+      idMedico: Number(idMedico),
+      date: dateISO,
+      sala: sala
+    };
+
+    console.log(dadosAgendamento)
+  
+    try {
+
+      const response = await fetch('http://localhost:8080/atendimento/agendar', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(dadosAgendamento)
+      });
+  
+      if (!response.ok) {
+        throw new Error(`Erro ${response.status}: ${response.statusText}`);
+      }
+  
+      const data = await response.json();
+      console.log('Atendimento agendado com sucesso:', data);
+      return data;
+  
+    } catch (error) {
+      console.error('Falha ao agendar atendimento:', error);
+    }
+  }
+  
+  document.getElementById('btnConfirmar').addEventListener('click', () => {
+    
+    const dataSelecionadaISO = new Date().toISOString();
+    agendarAtendimento(dataSelecionadaISO);
+  });
+  
+
+

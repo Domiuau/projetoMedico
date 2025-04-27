@@ -25,10 +25,11 @@ public class Medico {
     private String email;
     private String senha;
     private boolean ativo;
+    private Double valorConsulta;
     @OneToMany(mappedBy = "medico", cascade = CascadeType.ALL)
     private List<Atendimento> atendimentos = new ArrayList<>();
 
-    public Medico(String nome, String crm, String especialidade, String telefone, String email, String senha) {
+    public Medico(String nome, String crm, String especialidade, String telefone, String email, String senha, Double valorConsulta) {
         this.nome = nome;
         this.crm = crm;
         this.especialidade = especialidade;
@@ -36,6 +37,7 @@ public class Medico {
         this.email = email;
         this.senha = senha;
         this.ativo = true;
+        this.valorConsulta = valorConsulta;
 
     }
 

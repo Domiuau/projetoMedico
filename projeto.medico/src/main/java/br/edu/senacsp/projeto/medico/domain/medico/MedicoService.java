@@ -18,9 +18,11 @@ public class MedicoService {
 
     public ResponseEntity<?> cadastrar(MedicoDTO medicoDTO) {
 
-        Medico medico = new Medico(medicoDTO.nome(), medicoDTO.crm(), medicoDTO.especialidade(), medicoDTO.telefone(), medicoDTO.email(), medicoDTO.senha());
+        Medico medico = new Medico(medicoDTO.nome(), medicoDTO.crm(), medicoDTO.especialidade(), medicoDTO.telefone(), medicoDTO.email(), medicoDTO.senha(), medicoDTO.valorConsulta());
         medicoRepository.save(medico);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new MedicoCadastradoDTO(medico.getNome(), medico.getCrm(), medico.getEmail(), medico.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(
+                new MedicoCadastradoDTO(medico)
+        );
 
     }
 
@@ -76,5 +78,36 @@ public class MedicoService {
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Medico não encontrado", "Verifique as informações e tente novamente"));
+    }
+
+    public ResponseEntity<?> getMedicosDisponiveis() {
+        var medicos = medicoRepository.findByAtivoTrue();
+        if (medicos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Nenhum médico disponível", "Verifique as informações e tente novamente"));
+        }
+        return ResponseEntity.ok(medicos.stream().map(MedicoCadastradoDTO::new).toList());
+    }
+
+    public ResponseEntity<?> getMedicosDisponiveisBusca(String busca) {
+
+        var medicos = medicoRepository.findByAtivoTrueAndNomeContainingIgnoreCaseOrAtivoTrueAndEspecialidadeContainingIgnoreCase(busca, busca);
+        if (medicos.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Nenhum médico disponível", "Verifique as informações e tente novamente"));
+        }
+        return ResponseEntity.ok(medicos.stream().map(MedicoCadastradoDTO::new).toList());
+
+
+
+    }
+
+    public ResponseEntity<?> getMedico(Long idMedico) {
+
+        var medico = medicoRepository.findById(idMedico);
+
+        if (medico.isPresent()) {
+            return ResponseEntity.ok(new MedicoCadastradoDTO(medico.get()));
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Médico não encontrado", "Verifique as informações e tente novamente"));
+
     }
 }

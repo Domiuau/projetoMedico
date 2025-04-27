@@ -16,28 +16,28 @@ public class PacienteController {
     @Autowired
     private PacienteService pacienteService;
 
-    @PostMapping("/cadastrar")
+    @PostMapping("/cadastrar") @CrossOrigin
     public ResponseEntity<?> cadastroPaciente(@RequestBody PacienteDTO pacienteDTO) {
 
        return pacienteService.cadastro(pacienteDTO);
 
     }
 
-    @PostMapping("/login")
+    @PostMapping("/login") @CrossOrigin
     public ResponseEntity<?> loginPaciente(@RequestBody LoginDTO loginDTO) {
 
         return pacienteService.login(loginDTO);
 
     }
 
-    @PutMapping("/atualizar")
+    @PutMapping("/atualizar") @CrossOrigin
     public ResponseEntity<?> atualizarPaciente(@RequestBody AtualizarPacienteDTO atualizarPacienteDTO) {
 
         return pacienteService.atualizar(atualizarPacienteDTO);
 
     }
 
-    @DeleteMapping("/deletar/{idPaciente}")
+    @DeleteMapping("/deletar/{idPaciente}") @CrossOrigin
     public ResponseEntity<?> deletarPaciente(@PathVariable Long idPaciente) {
 
         return pacienteService.desativar(idPaciente);
