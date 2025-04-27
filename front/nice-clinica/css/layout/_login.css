@@ -1,0 +1,120 @@
+.container-login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    padding: 150px 0;
+}
+
+.titulo-container-login {
+    font-size: 30px;
+    margin: 0 0 40px;
+    color: var(--font-3);
+}
+
+.container-login-cadastro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-0);
+
+    width: 500px;
+    height: auto;
+    padding: 0 0 50px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px 0 rgba(135, 149, 175, 0.1);
+}
+
+.selecao-login-cadastro {
+    display: flex;
+    width: 100%;
+}
+
+.selecao-login-cadastro button {
+    border: none;
+    padding: 20px;
+    margin: 0;
+    width: 100%;
+    cursor: pointer;
+
+    font-size: 18px;
+}
+
+.btn-form-login {
+    border-radius: 20px 0 0;
+    background-color: var(--bg-0);
+    font-weight: 500;
+}
+
+.btn-form-cadastro {
+    border-radius: 0 20px 0 0;
+    background-color: rgba(135, 149, 175, 0.1);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 50px 10px;
+    width: 350px;
+}
+
+.formulario label {
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.formulario input {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-formulario {
+    background-color: var(--bg-2);
+    font-size: 18px;
+    color: var(--font-2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
+.container-ckb-aceite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.container-ckb-aceite input {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.container-ckb-aceite label {
+    font-size: 14px;
+}
+
+.container-ckb-aceite label span a {
+    color: var(--font-4);
+}
+
+.selecao-login-cadastro button {
+    font-weight: 400;
+    background-color: rgba(135, 149, 175, 0.1);
+    transition: background-color 0.3s, font-weight 0.3s;
+}
+
+.selecao-login-cadastro button.ativo {
+    font-weight: 500;
+    background-color: var(--bg-0);
+}
+

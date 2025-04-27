@@ -44,4 +44,11 @@ public class PacienteController {
 
     }
 
+    @GetMapping("/{idPaciente}") @CrossOrigin
+    public ResponseEntity<?> getPaciente(@PathVariable Long idPaciente) {
+
+        return pacienteService.getPaciente(idPaciente);
+
+    }
+
 }

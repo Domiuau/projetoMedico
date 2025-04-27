@@ -28,11 +28,14 @@
                     <div>
                         <ul class="navbar-header-lista">
                             <li class="navbar-logotipo">
-                                <div>
-                                    <i class='bx bx-plus-medical'></i>
+                                <a href="/nice-clinica/index.html" class="logo-link">
+                                  <div>
+                                    <i class="bx bx-plus-medical"></i>
                                     <p>Nice Clinic</p>
-                                </div>
-                            </li>
+                                  </div>
+                                </a>
+                              </li>
+                              
                             <!-- <li>
                                 <a href="#">Agendar Consulta</a>
                             </li>
@@ -54,7 +57,7 @@
     </header>
     <main class="container-tela-principal" id="container-tela-principal">
 
-        <div class="opcoes-servicos">
+        <div class="opcoes-servicos" id="opcoes-servicos">
             <div class="opcao-servico">
                 <a href="#">
                     <i class='bx bx-first-aid'></i>
@@ -64,19 +67,13 @@
             <div class="opcao-servico">
                 <a href="#">
                     <i class='bx bx-test-tube'></i>
-                    <p>Agendar exame</p>
+                    <p>Consultas marcadas</p>
                 </a>
             </div>
             <div class="opcao-servico">
                 <a href="#">
                     <i class='bx bx-calendar-event'></i>
-                    <p>Meus agendamentos</p>
-                </a>
-            </div>
-            <div class="opcao-servico">
-                <a href="#">
-                    <i class='bx bx-stats'></i>
-                    <p>Resultados de exames</p>
+                    <p>Consultas passadas</p>
                 </a>
             </div>
         </div>
@@ -113,7 +110,9 @@
     </main>
     <footer></footer>
 
+    <script src="./js/pages/header.js"></script>
     <script src="../nice-clinica/js/pages/tela-inicial.js"></script>
+
 </body>
 
 </html>

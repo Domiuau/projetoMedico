@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- GOOGLE FONTS - POPPINS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- BOXICONS -->
+  <link
+    href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="../css/main.css" />
+
+  <!-- ICONE NICE GRAPHICS -->
+  <link
+    rel="shortcut icon"
+    href="../img/logo-icon.png"
+    type="image/x-icon"
+  />
+
+  <title>Nice Graphics - Cadastro</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="barra-de-navegacao">
+      <ul>
+        <li>
+          <div>
+            <ul class="navbar-header-lista">
+                <li class="navbar-logotipo">
+                    <a href="/nice-clinica/index.html" class="logo-link">
+                      <div>
+                        <i class="bx bx-plus-medical"></i>
+                        <p>Nice Clinic</p>
+                      </div>
+                    </a>
+                  </li>                  
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container-login" id="container-login">
+    <h2 class="titulo-container-login">Adicione as informações do novo médico</h2>
+    <div class="container-login-cadastro">
+      <form class="formulario" id="formulario" method="post" action="/nice-clinica/api/medica/cadastrar">
+        <!-- Nome -->
+        <label for="input-nome">Nome</label>
+        <input
+          type="text"
+          name="input-nome"
+          id="input-nome"
+          placeholder="Doutora Elina"
+          required
+        />
+
+        <!-- CRM -->
+        <label for="input-crm">CRM</label>
+        <input
+          type="text"
+          name="input-crm"
+          id="input-crm"
+          placeholder="223123143"
+          required
+        />
+
+        <!-- Especialidade -->
+        <label for="input-especialidade">Especialidade</label>
+        <input
+          type="text"
+          name="input-especialidade"
+          id="input-especialidade"
+          placeholder="Oftalmologista"
+          required
+        />
+
+        <!-- Telefone -->
+        <label for="input-telefone">Telefone</label>
+        <input
+          type="tel"
+          name="input-telefone"
+          id="input-telefone"
+          placeholder="(00) 00000-0000"
+          required
+        />
+
+        <!-- E-mail -->
+        <label for="input-email">E-mail</label>
+        <input
+          type="email"
+          name="input-email"
+          id="input-email"
+          placeholder="example@email.com"
+          required
+        />
+
+        <!-- Valor da Consulta -->
+        <label for="input-valor-consulta">Valor da Consulta</label>
+        <input
+          type="number"
+          name="input-valor-consulta"
+          id="input-valor-consulta"
+          placeholder="4113.50"
+          step="0.01"
+          required
+        />
+
+        <!-- Botão de Cadastrar -->
+        <button type="submit" class="btn-formulario">Cadastrar</button>
+      </form>
+    </div>
+  </main>
+
+  <script src="../js/pages/cadastro-medico.js"></script>
+
+</body>
+
+</html>

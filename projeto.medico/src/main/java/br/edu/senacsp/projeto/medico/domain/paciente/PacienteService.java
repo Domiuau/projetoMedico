@@ -2,6 +2,7 @@ package br.edu.senacsp.projeto.medico.domain.paciente;
 
 import br.edu.senacsp.projeto.medico.domain.dto.ErroDTO;
 import br.edu.senacsp.projeto.medico.domain.dto.LoginDTO;
+import br.edu.senacsp.projeto.medico.domain.dto.LoginPacienteRealizadoDTO;
 import br.edu.senacsp.projeto.medico.domain.dto.LoginRealizadoDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,7 @@ public class PacienteService {
 
         Paciente paciente = new Paciente(pacienteDTO.nome(), pacienteDTO.cpf(), pacienteDTO.endereco(), pacienteDTO.telefone(), pacienteDTO.email(), pacienteDTO.senha());
         pacienteRepository.save(paciente);
-        return ResponseEntity.status(HttpStatus.CREATED).body(new PacienteCadastradoDTO(paciente.getNome(), paciente.getEmail(), paciente.getId()));
+        return ResponseEntity.status(HttpStatus.CREATED).body(new PacienteCadastradoDTO(paciente.getNome(), paciente.getEmail(), paciente.getRole(), paciente.getId()));
     }
 
     public ResponseEntity<?> login(LoginDTO loginDTO) {
@@ -33,7 +34,7 @@ public class PacienteService {
 
             if (paciente.get().getSenha().equals(loginDTO.senha())) {
 
-                return ResponseEntity.ok(new LoginRealizadoDTO(paciente.get().getNome(), paciente.get().getId()));
+                return ResponseEntity.ok(new LoginPacienteRealizadoDTO(paciente.get()));
             } else {
 
                 return ResponseEntity.badRequest().body(new ErroDTO("Senha incorreta", "Verifique sua senha e tente novamente"));
@@ -78,5 +79,15 @@ public class PacienteService {
         }
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Paciente não encontrado", "Verifique as informações e tente novamente"));
+    }
+
+    public ResponseEntity<?> getPaciente(Long idPaciente) {
+        var paciente = pacienteRepository.findById(idPaciente);
+
+        if (paciente.isPresent()) {
+            return ResponseEntity.ok(new PacienteDTO(paciente.get()));
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErroDTO("Paciente não encontrado", "Verifique as informações e tente novamente"));
+        }
     }
 }

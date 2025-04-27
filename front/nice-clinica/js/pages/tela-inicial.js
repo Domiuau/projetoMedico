@@ -3,6 +3,26 @@ const lista = document.querySelector('.lista-especialidades');
 const btnBuscar = document.getElementById('btn-buscar');
 const inputPesquisa = document.getElementById('input-pesquisa');
 
+
+if (localStorage.getItem('userRole') === 'ROLE_ADMIN') {
+  console.log(localStorage.getItem('userRole'))
+
+    const opcoesServicos = document.getElementById('opcoes-servicos');
+
+    const novaOpcao = document.createElement('div');
+    novaOpcao.className = 'opcao-servico';
+    novaOpcao.innerHTML = `
+        <a href="./pages/cadastro-medico.html">
+            <i class='bx bx-user-plus'></i>
+            <p>Adicionar médico</p>
+        </a>
+    `;
+
+    opcoesServicos.appendChild(novaOpcao);
+}
+
+
+
 fetch('http://localhost:8080/medico/disponiveis')
     .then(resp => {
         if (!resp.ok) {

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- GOOGLE FONTS - POPPINS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/main.css">
+
+        <!-- ICONE NICE GRAPHICS -->
+        <link rel="shortcut icon" href="../img/logo-icon.png" type="image/x-icon">
+
+    <title>Nice Graphics - Login</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="barra-de-navegacao">
+            <ul>
+                <li>
+                    <div>
+                        <ul class="navbar-header-lista">
+                            <li class="navbar-logotipo">
+                                <a href="/nice-clinica/index.html" class="logo-link">
+                                  <div>
+                                    <i class="bx bx-plus-medical"></i>
+                                    <p>Nice Clinic</p>
+                                  </div>
+                                </a>
+                              </li>
+                              
+                            <!-- <li>
+                                <a href="#">Agendar Consulta</a>
+                            </li>
+                            <li>
+                                <a href="#">Agendar Exame</a>
+                            </li>
+                            <li>
+                                <a href="#">Resultados de Exames</a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </li>
+                <li id="opcoes-usuario" class="opcoes-usuario">
+                    <button class="btn-entrar">Entrar</button>
+                    <button class="btn-cadastrar">Cadastre-se</button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container-login" id="container-login">
+
+        <h2 class="titulo-container-login">Entre com a sua conta</h2>
+
+        <div class="container-login-cadastro">
+
+            <div class="selecao-login-cadastro">
+                <button class="btn-form-login" id="btn-form-login">Login</button>
+                <button class="btn-form-cadastro" id="btn-form-cadastro">Cadastre-se</button>
+            </div>
+
+            <div>
+                <form class="formulario" id="formulario" method="post">
+                    <label for="input-email">E-mail</label>
+                    <input type="email" name="input-email" id="input-email" placeholder="exemplo@email.com">
+                    <label for="input-senha">Senha</label>
+                    <input type="password" name="input-senha" id="input-senha" placeholder="********">
+                
+                    <button type="submit" class="btn-formulario">Entrar</button>
+                </form>
+            </div>
+
+        </div>
+        
+
+    </main>
+
+
+
+    <!-- CHART.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+
+    <!-- JS SCRIPT -->
+    <script src="../js/script.js"></script>
+    <script src="../js/pages/tela-login.js"></script>
+    <script src="../js/pages/header.js"></script>
+</body>
+
+</html>

@@ -25,6 +25,7 @@ public class Paciente {
     private String email;
     private String senha;
     private boolean ativo;
+    private String role;
     @OneToMany(mappedBy = "paciente", cascade = CascadeType.ALL)
     private List<Atendimento> atendimentos = new ArrayList<>();
 
@@ -36,6 +37,7 @@ public class Paciente {
         this.email = email;
         this.senha = senha;
         this.ativo = true;
+        this.role = "ROLE_PACIENTE";
     }
 
 
