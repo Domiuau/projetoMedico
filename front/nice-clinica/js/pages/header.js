@@ -36,10 +36,10 @@ window.onload = function definirHeaderUsuario() {
             <div>
                 <ul class="navbar-header-buttons">
                     <li>
-                        <button class="btn-entrar" onclick="window.location.href='./pages/login-paciente.html'">Entrar</button>
+                        <button class="btn-entrar" onclick="window.location.href='../pages/login-paciente.html'">Entrar</button>
                     </li>
                     <li>
-                        <button class="btn-cadastro" onclick="window.location.href='./pages/login-paciente.html'">Cadastre-se</button>
+                        <button class="btn-cadastro" onclick="window.location.href='../pages/login-paciente.html'">Cadastre-se</button>
                     </li>
                 </ul>
             </div>
