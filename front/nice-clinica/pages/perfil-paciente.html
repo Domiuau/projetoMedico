@@ -16,8 +16,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/main.css">
 
-        <!-- ICONE NICE GRAPHICS -->
-        <link rel="shortcut icon" href="../img/logo-icon.png" type="image/x-icon">
+    <!-- ICONE NICE GRAPHICS -->
+    <link rel="shortcut icon" href="../img/logo-icon.png" type="image/x-icon">
 
     <title>Nice Clinic - Login</title>
 </head>
@@ -32,13 +32,13 @@
                         <ul class="navbar-header-lista">
                             <li class="navbar-logotipo">
                                 <a href="../index.html" class="logo-link">
-                                  <div>
-                                    <i class="bx bx-plus-medical"></i>
-                                    <p>Nice Clinic</p>
-                                  </div>
+                                    <div>
+                                        <i class="bx bx-plus-medical"></i>
+                                        <p>Nice Clinic</p>
+                                    </div>
                                 </a>
-                              </li>
-                              
+                            </li>
+
                             <!-- <li>
                                 <a href="#">Agendar Consulta</a>
                             </li>
@@ -61,32 +61,39 @@
 
     <main class="container-login" id="container-login">
 
-        <h2 class="titulo-container-login">Entre com a sua conta</h2>
+        <h2 class="titulo-container-login">Meu Cadastro</h2>
 
-        <div class="container-login-cadastro">
 
-            <div class="selecao-login-cadastro">
-                <button class="btn-form-login" id="btn-form-login">Login</button>
-                <button class="btn-form-cadastro" id="btn-form-cadastro">Cadastre-se</button>
-            </div>
-
-            <div>
-                <form class="formulario" id="formulario" method="post">
+        <form class="formulario-atualizar-cadastro" id="formulario" method="post">
+            <div class="campos-formulario">
+                <div>
+                    <label for="input-nome">Nome</label>
+                    <input type="text" name="input-nome" id="input-nome" placeholder="Seu nome completo" required="yes">
+                    <label for="input-cpf">CPF</label>
+                    <input type="text" name="input-cpf" id="input-cpf" placeholder="000.000.000-00" required="yes">
+                    <label for="input-endereco">Endereço</label>
+                    <input type="text" name="input-endereco" id="input-endereco" placeholder="Rua, número, bairro"
+                        required="yes">
+                </div>
+                <div>
+                    <label for="input-telefone">Telefone</label>
+                    <input type="tel" name="input-telefone" id="input-telefone" placeholder="(00) 00000-0000"
+                        required="yes">
                     <label for="input-email">E-mail</label>
-                    <input type="email" name="input-email" id="input-email" placeholder="exemplo@email.com">
+                    <input type="email" name="input-email" id="input-email" placeholder="exemplo@dominio.com"
+                        required="yes">
                     <label for="input-senha">Senha</label>
-                    <input type="password" name="input-senha" id="input-senha" placeholder="********">
-                
-                    <button type="submit" class="btn-formulario">Entrar</button>
-                </form>
+                    <input type="password" name="input-senha" id="input-senha" placeholder="********" required="yes">
+                    <label for="input-senha-confirmacao">Confirme a senha</label>
+                    <input type="password" name="input-senha-confirmacao" id="input-senha-confirmacao"
+                        placeholder="********" required="yes">
+                </div>
             </div>
 
-        </div>
-        
+            <button type="submit" class="btn-formulario" id="btn-atualizar-cadastro">Atualizar Cadastro</button>
+        </form>
 
     </main>
-
-
 
     <!-- CHART.JS -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -94,7 +101,6 @@
 
     <!-- JS SCRIPT -->
     <script src="../js/script.js"></script>
-    <script src="../js/pages/tela-login.js"></script>
     <script src="../js/pages/header.js"></script>
 </body>
 

@@ -76,9 +76,9 @@
 }
 
 .btn-formulario {
-    background-color: var(--bg-2);
+    background-color: var(--bg-color-5);
     font-size: 18px;
-    color: var(--font-2);
+    color: var(--font-color-2);
     padding: 10px 20px;
     border: none;
     border-radius: 10px;

@@ -3,6 +3,7 @@
 @import "layout/_tela-principal.css";
 @import "layout/_tela-agendamento.css";
 @import "layout/_listagem-consultas.css";
+@import "layout/_perfil-paciente.css";
 @import "layout/_login.css";
 
 * {
