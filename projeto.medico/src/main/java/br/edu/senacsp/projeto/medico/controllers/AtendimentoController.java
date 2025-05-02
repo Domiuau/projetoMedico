@@ -32,4 +32,11 @@ public class AtendimentoController {
         return atendimentoService.getAtendimentosPaciente(idPaciente, tempo);
 
     }
+
+    @DeleteMapping("/cancelar/{id}") @CrossOrigin
+    public ResponseEntity<?> cancelarAtendimento(@PathVariable Long id) {
+
+        return atendimentoService.cancelarAtendimento(id);
+
+    }
 }

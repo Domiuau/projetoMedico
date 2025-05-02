@@ -1,4 +1,3 @@
-
 window.onload = function definirHeaderUsuario() {
 
     console.log("asd")
@@ -36,16 +35,15 @@ window.onload = function definirHeaderUsuario() {
             <div>
                 <ul class="navbar-header-buttons">
                     <li>
-                        <button class="btn-entrar" onclick="window.location.href='../pages/login-paciente.html'">Entrar</button>
+                        <button class="btn-entrar" onclick="window.location.href='./pages/login-paciente.html'">Entrar</button>
                     </li>
                     <li>
-                        <button class="btn-cadastro" onclick="window.location.href='../pages/login-paciente.html'">Cadastre-se</button>
+                        <button class="btn-cadastro" onclick="window.location.href='./pages/login-paciente.html'">Cadastre-se</button>
                     </li>
                 </ul>
             </div>
         `;
     }
-
 
 
 }
@@ -72,11 +70,11 @@ function menuFlutuanteCliente() {
                         <i class='bx bx-user'></i>
                         <p>Nome Usuário</p>
                     </li>
-                    <li class="opcao-usuario" title="Meu Perfil" onclick="window.location.href = '../pages/perfil-usuario.html'">
+                    <li class="opcao-usuario" title="Meu Perfil" onclick="window.location.href = './pages/perfil-paciente.html'">
                         <i class='bx bxs-user-detail'></i>
                         <p>Meu Perfil</p>
                     </li>
-                    <li class="opcao-usuario" title="Sair" onclick="window.location.href = '../pages/login.html'">
+                    <li class="opcao-usuario" title="Sair" onclick="window.location.href = './pages/login.html'">
                         <i class='bx bx-log-out'></i>
                         <p>Sair</p>
                     </li>

@@ -50,6 +50,8 @@ public class PacienteService {
     @Transactional
     public ResponseEntity<?> atualizar(AtualizarPacienteDTO atualizarPacienteDTO) {
 
+        System.out.println(atualizarPacienteDTO);
+
         var paciente = pacienteRepository.findById(atualizarPacienteDTO.id());
 
         if (paciente.isPresent()) {

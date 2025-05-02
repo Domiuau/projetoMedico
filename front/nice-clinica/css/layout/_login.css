@@ -86,6 +86,17 @@
     cursor: pointer;
 }
 
+.btn-deslogar {
+    background-color: var(--bg-color-6);
+    font-size: 18px;
+    color: var(--font-color-2);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 50px;
+    cursor: pointer;
+}
+
 .container-ckb-aceite {
     display: flex;
     justify-content: center;

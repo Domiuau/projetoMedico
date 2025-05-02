@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let dataAtual = new Date();
 
-    let dataSelecionada = null;
-    let horarioSelecionado = null;
+    let dataSelecionada = "";
+    let horarioSelecionado = "";
 
     const nomesMeses = [
         "Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho",
@@ -121,9 +121,9 @@ document.addEventListener("DOMContentLoaded", () => {
     btnConfirmar.addEventListener("click", () => {
         if (dataSelecionada && horarioSelecionado) {
 
-            agendarAtendimento(dataSelecionada + ":" + horarioSelecionado)
+            agendarAtendimento(toCorrectFormat(dataSelecionada, horarioSelecionado))
 
-            
+
         } else {
             console.log("Nenhuma data e horário selecionados.");
         }
@@ -223,52 +223,67 @@ async function agendarAtendimento(dateISO) {
     const params = new URLSearchParams(window.location.search);
     const idMedico = params.get('id');
     if (!idMedico) {
-      console.error('ID do médico não encontrado na URL.');
-      return;
+        console.error('ID do médico não encontrado na URL.');
+        return;
     }
-  
+
+    //console.log(dateISO)
+
+    console.log(dateISO)
+
     const letras = ['A', 'B', 'C', 'D'];
     const letra = letras[Math.floor(Math.random() * letras.length)];
     const numero = Math.floor(Math.random() * 400) + 100;
     const sala = `${letra}${numero}`;
-  
+
     const dadosAgendamento = {
-      idPaciente: 1,
-      idMedico: Number(idMedico),
-      date: dateISO,
-      sala: sala
+        idPaciente: localStorage.getItem("userId"),
+        idMedico: Number(idMedico),
+        date: dateISO,
+        sala: sala
     };
 
     console.log(dadosAgendamento)
-  
+
     try {
 
-      const response = await fetch('http://localhost:8080/atendimento/agendar', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dadosAgendamento)
-      });
-  
-      if (!response.ok) {
-        throw new Error(`Erro ${response.status}: ${response.statusText}`);
-      }
-  
-      const data = await response.json();
-      console.log('Atendimento agendado com sucesso:', data);
-      return data;
-  
+        const response = await fetch('http://localhost:8080/atendimento/agendar', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dadosAgendamento)
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        console.log(data)
+        alert('Sua consulta com o doutor(a) "' + data.nomeMedico + '" foi agendada com sucesso, para dia ' + data.date + ' na sala "' + data.sala + '"');
+        window.location.href = "/nice-clinica/index.html";
+        return data;
+
     } catch (error) {
-      console.error('Falha ao agendar atendimento:', error);
+        console.error('Falha ao agendar atendimento:', error);
     }
-  }
-  
-  document.getElementById('btnConfirmar').addEventListener('click', () => {
-    
-    const dataSelecionadaISO = new Date().toISOString();
-    agendarAtendimento(dataSelecionadaISO);
-  });
-  
+}
+
+document.getElementById('btnConfirmar').addEventListener('click', () => {
+
+  //  const data = toCorrectFormat(dataSelecionada, horarioSelecionado)
+  //  console.log(data)
+
+  //  agendarAtendimento(data);
+
+});
+
+
+function toCorrectFormat(dateStr, timeStr) {
+
+    return dateStr + "T" + timeStr;
+}
+
 
 

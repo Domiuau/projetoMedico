@@ -34,7 +34,7 @@ public class AtendimentoService {
                 Atendimento atendimento = new Atendimento(paciente.get(), medico.get(), atendimentoDTO.date(), atendimentoDTO.sala());
                 System.out.println("sasaddsadsasad: " + atendimento);
                 atendimentoRepository.save(atendimento);
-                return ResponseEntity.status(HttpStatus.CREATED).body(new AtendimentoConfirmadoDTO(atendimento.getId(), paciente.get().getNome(), medico.get().getNome(), atendimento.getSala(), atendimento.getDataAtendimento()));
+                return ResponseEntity.status(HttpStatus.CREATED).body(new AtendimentoConfirmadoDTO(atendimento.getId(), paciente.get().getNome(), medico.get().getNome(), medico.get().getEspecialidade() , atendimento.getSala(), atendimento.getDataAtendimento()));
 
             }
 
@@ -89,6 +89,21 @@ public class AtendimentoService {
         }
 
         return ResponseEntity.badRequest().body(new ErroDTO("Medico não encontrado", "O paciente com o ID: " + id + " não foi encontrado"));
+
+    }
+
+    public ResponseEntity<?> cancelarAtendimento(Long id) {
+
+        var atendimento = atendimentoRepository.findById(id);
+
+        if (atendimento.isPresent()) {
+
+            atendimentoRepository.delete(atendimento.get());
+            return ResponseEntity.ok("Atendimento cancelado com sucesso");
+
+        }
+
+        return ResponseEntity.badRequest().body(new ErroDTO("Atendimento não encontrado", "O atendimento com o ID: " + id + " não foi encontrado"));
 
     }
 }
