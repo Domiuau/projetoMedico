@@ -1,0 +1,64 @@
+CREATE DATABASE nice_clinica;
+
+USE nice_clinica;
+
+
+
+
+CREATE TABLE pacientes (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    cpf VARCHAR(14) UNIQUE NOT NULL,
+    endereco VARCHAR(255),
+    telefone VARCHAR(20),
+    ativo BOOL,
+    role VARCHAR(20),
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE medicos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    crm VARCHAR(20) UNIQUE NOT NULL,
+    especialidade VARCHAR(100),
+    telefone VARCHAR(20),
+    ativo BOOL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    senha VARCHAR(255) NOT NULL,
+    valor_consulta DOUBLE
+);
+
+CREATE TABLE atendimentos (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente BIGINT NOT NULL,
+    id_medico BIGINT NOT NULL,
+    data_atendimento DATE NOT NULL,
+    sala VARCHAR(50),
+    FOREIGN KEY (id_paciente) REFERENCES pacientes(id),
+    FOREIGN KEY (id_medico) REFERENCES medicos(id)
+);
+
+INSERT INTO pacientes (nome, cpf, endereco, telefone, ativo, role, email, senha) VALUES
+  ('João Silva',    '123.456.789-00', 'Rua das Flores, 123, São Paulo, SP', '(11) 98765-4321', TRUE, 'ROLE_ADMIN', 'joao.silva@example.com', 'senha123'),
+  ('Maria Oliveira','987.654.321-00', 'Av. Paulista, 1000, São Paulo, SP',  '(11) 91234-5678', TRUE, 'ROLE_PACIENTE', 'maria.oliveira@example.com', 'senha456');
+
+INSERT INTO medicos (nome, crm, especialidade, telefone, ativo, email, senha, valor_consulta) VALUES
+  ('Dr. Carlos Souza',   'CRM-SP12345', 'Cardiologia',  '(11) 98888-7777', TRUE, 'carlos.souza@clinicaexemplo.com',   'medsenha1', 250.00),
+  ('Dra. Fernanda Lima',  'CRM-SP23456', 'Dermatologia', '(11) 97777-6666', TRUE, 'fernanda.lima@clinicaexemplo.com','medsenha2', 200.00),
+  ('Dr. Eduardo Santos',  'CRM-SP34567', 'Ortopedia',    '(11) 96666-5555', TRUE, 'eduardo.santos@clinicaexemplo.com','medsenha3', 220.00),
+  ('Dra. Beatriz Costa',  'CRM-SP45678', 'Pediatria',    '(11) 95555-4444', TRUE, 'beatriz.costa@clinicaexemplo.com','medsenha4', 180.00),
+  ('Dr. Ricardo Almeida', 'CRM-SP56789', 'Neurologia',   '(11) 94444-3333', TRUE, 'ricardo.almeida@clinicaexemplo.com','medsenha5', 300.00);
+
+INSERT INTO atendimentos (id_paciente, id_medico, data_atendimento, sala) VALUES
+  (1, 1, '2025-04-15', '101'),
+  (2, 2, '2025-04-20', '102'),
+  (1, 3, '2025-01-10', '103'),
+  (2, 4, '2024-12-05', '104'),
+  (1, 5, '2025-03-30', '105'),
+  
+  (2, 1, '2025-05-10', '201'),
+  (1, 2, '2025-06-01', '202'),
+  (2, 3, '2025-07-15', '203'),
+  (1, 4, '2025-08-20', '204'),
+  (2, 5, '2025-05-25', '205');
