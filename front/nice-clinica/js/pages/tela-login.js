@@ -70,7 +70,8 @@ function atualizarFormulario(tipo) {
                     localStorage.setItem('userNome', data.nome);
                     localStorage.setItem('userRole', data.role);
 
-                    window.location.href = "/nice-clinica/index.html";
+                    window.location.href = "../index.html";
+
                 } else {
                     alert("Login inválido, tente novamente")
                 }
@@ -198,7 +199,8 @@ btnRegistro.addEventListener('click', (event) => {
             localStorage.setItem('userNome', data.nome);
             localStorage.setItem('userRole', data.role);
 
-            window.location.href = "/nice-clinica/index.html";
+            window.location.href = "../index.html";
+
         } else {
             alert("Não foi possível realizar o cadastro")
         }

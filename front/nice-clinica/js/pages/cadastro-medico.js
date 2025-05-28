@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = await response.json();
         console.log('Médico cadastrado:', data);
         alert('Cadastro realizado com sucesso!');
-        window.location.href = "/nice-clinica/index.html";
+        window.location.href = "../index.html";
         formulario.reset();
       } catch (err) {
         console.error('Erro ao cadastrar médico:', err);

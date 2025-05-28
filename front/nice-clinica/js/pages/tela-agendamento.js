@@ -262,7 +262,7 @@ async function agendarAtendimento(dateISO) {
         const data = await response.json();
         console.log(data)
         alert('Sua consulta com o doutor(a) "' + data.nomeMedico + '" foi agendada com sucesso, para dia ' + data.date + ' na sala "' + data.sala + '"');
-        window.location.href = "/nice-clinica/index.html";
+        window.location.href = "../index.html";
         return data;
 
     } catch (error) {

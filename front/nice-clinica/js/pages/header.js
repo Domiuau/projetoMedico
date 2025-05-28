@@ -74,7 +74,7 @@ function menuFlutuanteCliente() {
                         <i class='bx bxs-user-detail'></i>
                         <p>Meu Perfil</p>
                     </li>
-                    <li class="opcao-usuario" title="Sair" onclick="window.location.href = './pages/login.html'">
+                    <li class="opcao-usuario" title="Sair" onclick="window.location.href = './pages/login-paciente.html'">
                         <i class='bx bx-log-out'></i>
                         <p>Sair</p>
                     </li>
@@ -91,6 +91,7 @@ function menuFlutuanteCliente() {
             menuElement.remove();
             menuAberto = false;
         }
+
     });
 }
 
